@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #262626;
+  background: hsl(0, 0%, 15%);
   color: #d9d9d9;
   padding: 20px;
   height: 100vh;
@@ -42,7 +42,7 @@ header > p {
   align-items: center;
   padding: 10px;
   border-radius: 4px;
-  margin-block: 30px;
+  margin-block: 25px;
   max-width: 500px;
   width: 100%;
 }
@@ -64,10 +64,32 @@ header > p {
   gap: 5px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 36px;
+  margin-top: 20px;
 }
 
 .language {
   padding: 6px;
   font-size: 1.2rem;
   border-radius: 3px;
+}
+
+.letters-container {
+  margin: 15px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2px;
+}
+
+.letter {
+  background-color: hsl(0, 0%, 35%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  border-bottom: 1px solid #f9f4da;
 }
