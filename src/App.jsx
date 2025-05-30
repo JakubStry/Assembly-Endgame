@@ -8,6 +8,16 @@ import NewGameBtn from './components/NewGameBtn';
 
 function App() {
   const [currentWord, setCurrentWord] = useState('react');
+  const [guessedLetters, setGuessedLetters] = useState([]);
+
+  function chooseLetter(event) {
+    const clickedLetter = event.target.textContent;
+    if (guessedLetters.find((letter) => letter === clickedLetter)) {
+      return;
+    }
+    return setGuessedLetters((prevLetters) => [...prevLetters, clickedLetter]);
+  }
+  console.log(guessedLetters);
 
   return (
     <main>
@@ -15,7 +25,7 @@ function App() {
       <GameStatus />
       <Languages />
       <WordToGuess currentWord={currentWord} />
-      <Keyboard />
+      <Keyboard chooseLetter={chooseLetter} />
       <NewGameBtn />
     </main>
   );

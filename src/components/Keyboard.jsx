@@ -1,4 +1,4 @@
-export default function Keybord() {
+export default function Keyboard({ chooseLetter }) {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   const lettersArray = alphabet.split('');
@@ -6,7 +6,7 @@ export default function Keybord() {
   return (
     <section className="keyboard">
       {lettersArray.map((letter) => (
-        <button key={letter} className="keyboard-btn">
+        <button key={letter} className="keyboard-btn" onClick={chooseLetter}>
           {letter}
         </button>
       ))}
