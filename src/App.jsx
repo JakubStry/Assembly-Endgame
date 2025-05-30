@@ -4,6 +4,7 @@ import GameStatus from './components/GameStatus';
 import Languages from './components/Languages';
 import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard';
+import NewGameBtn from './components/NewGameBtn';
 
 function App() {
   const [currentWord, setCurrentWord] = useState('react');
@@ -15,6 +16,7 @@ function App() {
       <Languages />
       <WordToGuess currentWord={currentWord} />
       <Keyboard />
+      <NewGameBtn />
     </main>
   );
 }
