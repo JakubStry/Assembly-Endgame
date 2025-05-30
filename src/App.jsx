@@ -10,12 +10,11 @@ function App() {
   const [currentWord, setCurrentWord] = useState('react');
   const [guessedLetters, setGuessedLetters] = useState([]);
 
-  function chooseLetter(event) {
-    const clickedLetter = event.target.textContent;
-    if (guessedLetters.find((letter) => letter === clickedLetter)) {
+  function addGuessedLetter(letter) {
+    if (guessedLetters.find((element) => element === letter)) {
       return;
     }
-    return setGuessedLetters((prevLetters) => [...prevLetters, clickedLetter]);
+    return setGuessedLetters((prevLetters) => [...prevLetters, letter]);
   }
   console.log(guessedLetters);
 
@@ -25,7 +24,7 @@ function App() {
       <GameStatus />
       <Languages />
       <WordToGuess currentWord={currentWord} />
-      <Keyboard chooseLetter={chooseLetter} />
+      <Keyboard addGuessedLetter={addGuessedLetter} />
       <NewGameBtn />
     </main>
   );
