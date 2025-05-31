@@ -11,10 +11,8 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   function addGuessedLetter(letter) {
-    if (guessedLetters.find((element) => element === letter)) {
-      return;
-    }
-    return setGuessedLetters((prevLetters) => [...prevLetters, letter]);
+    if (guessedLetters.includes(letter)) return;
+    setGuessedLetters((prevLetters) => [...prevLetters, letter]);
   }
   console.log(guessedLetters);
 
