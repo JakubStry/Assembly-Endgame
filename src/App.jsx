@@ -16,13 +16,18 @@ function App() {
   }
   console.log(guessedLetters);
 
+  function checkLetter(letter) {
+    if (!guessedLetters.includes(letter)) return null;
+    return currentWord.includes(letter) ? 'right-letter' : 'wrong-letter';
+  }
+
   return (
     <main>
       <Header />
       <GameStatus />
       <Languages />
       <WordToGuess currentWord={currentWord} />
-      <Keyboard addGuessedLetter={addGuessedLetter} />
+      <Keyboard addGuessedLetter={addGuessedLetter} checkLetter={checkLetter} />
       <NewGameBtn />
     </main>
   );

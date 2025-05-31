@@ -112,8 +112,16 @@ header > p {
   cursor: pointer;
 }
 
-.keyboard-btn:hover {
+/* .keyboard-btn:hover {
   background-color: hsl(41, 97%, 47%);
+} */
+
+.right-letter {
+  background-color: hwb(103 16% 17%);
+}
+
+.wrong-letter {
+  background-color: rgb(245, 58, 58);
 }
 
 .new-game-btn {
