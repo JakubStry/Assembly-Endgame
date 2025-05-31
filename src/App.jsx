@@ -26,7 +26,7 @@ function App() {
       <Header />
       <GameStatus />
       <Languages />
-      <WordToGuess currentWord={currentWord} />
+      <WordToGuess currentWord={currentWord} guessedLetters={guessedLetters} />
       <Keyboard addGuessedLetter={addGuessedLetter} checkLetter={checkLetter} />
       <NewGameBtn />
     </main>

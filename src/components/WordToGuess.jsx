@@ -1,14 +1,12 @@
-export default function WordToGuess({ currentWord }) {
+export default function WordToGuess({ currentWord, guessedLetters }) {
   const word = currentWord;
   const letters = [...word];
 
-  return (
-    <section className="letters-container">
-      {letters.map((letter, index) => (
-        <span key={index} className="letter">
-          {letter.toUpperCase()}
-        </span>
-      ))}
-    </section>
-  );
+  const wordElements = letters.map((letter, index) => (
+    <span key={index} className="letter">
+      {guessedLetters.includes(letter) ? letter.toUpperCase() : ''}
+    </span>
+  ));
+
+  return <section className="letters-container">{wordElements}</section>;
 }
