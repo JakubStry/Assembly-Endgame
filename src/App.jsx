@@ -15,7 +15,12 @@ function App() {
     (letter) => !currentWord.includes(letter)
   ).length;
 
-  const isGameOver = wrongGuessesCount >= languages.length - 1;
+  const isGameWon = currentWord
+    .split('')
+    .every((letter) => guessedLetters.includes(letter));
+  const isGameLost = wrongGuessesCount >= languages.length - 1;
+
+  const isGameEnd = isGameLost || isGameWon;
 
   function addGuessedLetter(letter) {
     if (guessedLetters.includes(letter)) return;
@@ -34,7 +39,7 @@ function App() {
       <Languages wrongGuessesCount={wrongGuessesCount} />
       <WordToGuess currentWord={currentWord} guessedLetters={guessedLetters} />
       <Keyboard addGuessedLetter={addGuessedLetter} checkLetter={checkLetter} />
-      {isGameOver && <NewGameBtn />}
+      {isGameEnd && <NewGameBtn />}
     </main>
   );
 }
