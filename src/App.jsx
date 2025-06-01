@@ -30,7 +30,7 @@ function App() {
     <main>
       <Header />
       <GameStatus />
-      <Languages />
+      <Languages wrongGuessesCount={wrongGuessesCount} />
       <WordToGuess currentWord={currentWord} guessedLetters={guessedLetters} />
       <Keyboard addGuessedLetter={addGuessedLetter} checkLetter={checkLetter} />
       <NewGameBtn />
