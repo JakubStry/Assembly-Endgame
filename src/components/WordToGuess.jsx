@@ -1,6 +1,5 @@
 export default function WordToGuess({ currentWord, guessedLetters }) {
-  const word = currentWord;
-  const letters = [...word];
+  const letters = [...currentWord];
 
   const wordElements = letters.map((letter, index) => (
     <span key={index} className="letter">

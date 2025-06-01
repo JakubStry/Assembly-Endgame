@@ -10,11 +10,16 @@ function App() {
   const [currentWord, setCurrentWord] = useState('react');
   const [guessedLetters, setGuessedLetters] = useState([]);
 
+  const wrongGuessesCount = guessedLetters.filter(
+    (letter) => !currentWord.includes(letter)
+  ).length;
+
+  console.log(wrongGuessesCount);
+
   function addGuessedLetter(letter) {
     if (guessedLetters.includes(letter)) return;
     setGuessedLetters((prevLetters) => [...prevLetters, letter]);
   }
-  console.log(guessedLetters);
 
   function checkLetter(letter) {
     if (!guessedLetters.includes(letter)) return null;
