@@ -5,6 +5,7 @@ import Languages from './components/Languages';
 import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard';
 import NewGameBtn from './components/NewGameBtn';
+import { languages } from '../languages';
 
 function App() {
   const [currentWord, setCurrentWord] = useState('react');
@@ -14,7 +15,7 @@ function App() {
     (letter) => !currentWord.includes(letter)
   ).length;
 
-  console.log(wrongGuessesCount);
+  const isGameOver = wrongGuessesCount >= languages.length - 1;
 
   function addGuessedLetter(letter) {
     if (guessedLetters.includes(letter)) return;
@@ -33,7 +34,7 @@ function App() {
       <Languages wrongGuessesCount={wrongGuessesCount} />
       <WordToGuess currentWord={currentWord} guessedLetters={guessedLetters} />
       <Keyboard addGuessedLetter={addGuessedLetter} checkLetter={checkLetter} />
-      <NewGameBtn />
+      {isGameOver && <NewGameBtn />}
     </main>
   );
 }

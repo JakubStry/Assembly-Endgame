@@ -84,6 +84,7 @@ header > p {
   height: 100%;
   width: 100%;
   font-size: 0.85rem;
+  border-radius: 3px;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.7);
