@@ -1,8 +1,10 @@
-export default function GameStatus() {
+export default function GameStatus({ renderGameStatus }) {
+  const { title, message, className } = renderGameStatus();
+
   return (
-    <section className="game-status">
-      <h2>You win!</h2>
-      <p>Well done! 🎉</p>
+    <section className={`game-status ${className}`}>
+      <h2>{title}</h2>
+      <p>{message}</p>
     </section>
   );
 }

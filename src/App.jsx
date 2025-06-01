@@ -32,10 +32,32 @@ function App() {
     return currentWord.includes(letter) ? 'right-letter' : 'wrong-letter';
   }
 
+  function renderGameStatus() {
+    if (isGameWon) {
+      return {
+        title: 'You win!',
+        message: 'Well done! 🎉',
+        className: 'win-status',
+      };
+    } else if (isGameLost) {
+      return {
+        title: 'You lost!',
+        message: 'Better start to learn Assembly 🥹',
+        className: 'lose-status',
+      };
+    } else {
+      return {
+        title: '',
+        message: '',
+        className: 'in-game-status',
+      };
+    }
+  }
+
   return (
     <main>
       <Header />
-      <GameStatus />
+      <GameStatus renderGameStatus={renderGameStatus} />
       <Languages wrongGuessesCount={wrongGuessesCount} />
       <WordToGuess currentWord={currentWord} guessedLetters={guessedLetters} />
       <Keyboard addGuessedLetter={addGuessedLetter} checkLetter={checkLetter} />
