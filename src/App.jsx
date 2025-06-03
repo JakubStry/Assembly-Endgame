@@ -13,13 +13,15 @@ function App() {
   const [currentWord, setCurrentWord] = useState('react');
   const [guessedLetters, setGuessedLetters] = useState([]);
 
+  const maxWrongGuesses = languages.length - 1;
   const wrongGuessCount = guessedLetters.filter(
     (letter) => !currentWord.includes(letter)
   ).length;
+  const guessesLeft = maxWrongGuesses - wrongGuessCount;
   const isGameWon = currentWord
     .split('')
     .every((letter) => guessedLetters.includes(letter));
-  const isGameLost = wrongGuessCount >= languages.length - 1;
+  const isGameLost = wrongGuessCount >= maxWrongGuesses;
   const isGameEnd = isGameWon || isGameLost;
   const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
   const isLastGuessIncorrect =
@@ -81,10 +83,30 @@ function App() {
       />
       <Languages wrongGuessCount={wrongGuessCount} />
       <WordToGuess currentWord={currentWord} guessedLetters={guessedLetters} />
+      {/* Screen reader only section*/}
+      <section className="sr-only" aria-live="polite">
+        <p>
+          {currentWord.includes(lastGuessedLetter)
+            ? `Correct! The letter ${lastGuessedLetter} is in the world.`
+            : `Sorry, the letter ${lastGuessedLetter} is not in the world.`}
+          You have {guessesLeft} attemps left.
+        </p>
+        <p>
+          Current word:{' '}
+          {currentWord
+            .split('')
+            .map((letter) =>
+              guessedLetters.includes(letter) ? letter + '.' : 'blank'
+            )
+            .join(' ')}
+          dd
+        </p>
+      </section>
       <Keyboard
         checkLetter={checkLetter}
         addGuessedLetter={addGuessedLetter}
         isGameEnd={isGameEnd}
+        guessedLetters={guessedLetters}
       />
       {isGameEnd && <NewGameBtn />}
     </main>

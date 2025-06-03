@@ -1,5 +1,10 @@
 import clsx from 'clsx';
-export default function Keyboard({ addGuessedLetter, checkLetter, isGameEnd }) {
+export default function Keyboard({
+  addGuessedLetter,
+  checkLetter,
+  isGameEnd,
+  guessedLetters,
+}) {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   const lettersArray = alphabet.split('');
 
@@ -10,6 +15,8 @@ export default function Keyboard({ addGuessedLetter, checkLetter, isGameEnd }) {
           key={letter}
           className={clsx('keyboard-btn', checkLetter(letter))}
           disabled={isGameEnd}
+          aria-disabled={guessedLetters.includes(letter)}
+          aria-label={`Letter ${letter}`}
           onClick={() => addGuessedLetter(letter)}
         >
           {letter.toUpperCase()}
