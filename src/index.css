@@ -40,12 +40,31 @@ header > p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: #f9f4da;
   padding: 10px;
   border-radius: 4px;
   margin-block: 25px;
   max-width: 500px;
   width: 100%;
-  height: 70px;
+  min-height: 70px;
+}
+
+.game-status.won {
+  background-color: #10a95b;
+}
+
+.game-status.lost {
+  background-color: #ba2a2a;
+}
+
+.game-status.farewell {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
+}
+
+.game-status > p.farewell-message {
+  font-style: italic;
+  font-weight: 400;
 }
 
 .game-status > h2 {
@@ -55,19 +74,7 @@ header > p {
 
 .game-status > p {
   margin: 5px 0;
-  font-size: 1.2rem;
-}
-
-.win-status {
-  background-color: #10a85b;
-}
-
-.lose-status {
-  background-color: rgb(168, 29, 4);
-}
-
-.in-game-status {
-  background-color: rgb(141, 2, 141);
+  /* font-size: 1.2rem; */
 }
 
 .languages-container {
@@ -139,6 +146,11 @@ header > p {
   border: 1px solid #d7d7d7;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.keyboard-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* .keyboard-btn:hover {
