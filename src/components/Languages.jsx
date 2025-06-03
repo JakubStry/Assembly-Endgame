@@ -9,9 +9,11 @@ export default function Languages({ wrongGuessCount }) {
       color: language.color,
     };
 
-    const className = clsx('langauge', isLanguageLost && 'lost');
+    const className = clsx('language', isLanguageLost && 'lost');
     return (
-      <span className={className} style={styles} key={language.name}></span>
+      <span className={className} style={styles} key={language.name}>
+        {language.name}
+      </span>
     );
   });
 

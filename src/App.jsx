@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { startTransition, useState } from 'react';
 import clsx from 'clsx';
 import { languages } from '../languages';
 import { getFarewellText } from '../utils';
@@ -8,9 +8,10 @@ import Languages from './components/Languages';
 import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard';
 import NewGameBtn from './components/NewGameBtn';
+import { getRandomWord } from '../utils';
 
 function App() {
-  const [currentWord, setCurrentWord] = useState('react');
+  const [currentWord, setCurrentWord] = useState(() => getRandomWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   const maxWrongGuesses = languages.length - 1;
@@ -74,6 +75,11 @@ function App() {
     return null;
   }
 
+  function startNewGame() {
+    setCurrentWord(() => getRandomWord());
+    setGuessedLetters([]);
+  }
+
   return (
     <main>
       <Header />
@@ -82,7 +88,11 @@ function App() {
         gameStatusClass={gameStatusClass}
       />
       <Languages wrongGuessCount={wrongGuessCount} />
-      <WordToGuess currentWord={currentWord} guessedLetters={guessedLetters} />
+      <WordToGuess
+        currentWord={currentWord}
+        guessedLetters={guessedLetters}
+        isGameLost={isGameLost}
+      />
       {/* Screen reader only section*/}
       <section className="sr-only" aria-live="polite">
         <p>
@@ -108,7 +118,7 @@ function App() {
         isGameEnd={isGameEnd}
         guessedLetters={guessedLetters}
       />
-      {isGameEnd && <NewGameBtn />}
+      {isGameEnd && <NewGameBtn startNewGame={startNewGame} />}
     </main>
   );
 }
