@@ -1,5 +1,6 @@
 import { startTransition, useState } from 'react';
 import clsx from 'clsx';
+import Confetti from 'react-confetti';
 import { languages } from '../languages';
 import { getFarewellText } from '../utils';
 import Header from './components/Header';
@@ -82,6 +83,17 @@ function App() {
 
   return (
     <main>
+      {isGameWon && (
+        <Confetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          numberOfPieces={250}
+          gravity={0.2}
+          tweenDuration={4000}
+          recycle={false}
+        />
+      )}
+
       <Header />
       <GameStatus
         renderGameStatus={renderGameStatus}
