@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 export default function WordToGuess({
   currentWord,
   guessedLetters,
@@ -10,7 +12,13 @@ export default function WordToGuess({
     const displayLetter = shouldShow ? letter.toUpperCase() : '';
 
     return (
-      <span key={index} className="letter">
+      <span
+        key={index}
+        className={clsx(
+          'letter',
+          !guessedLetters.includes(letter) && 'missing-letter'
+        )}
+      >
         {displayLetter}
       </span>
     );
