@@ -12,21 +12,24 @@ import NewGameBtn from './components/NewGameBtn';
 
 function App() {
   const [currentWord, setCurrentWord] = useState(() => {
-    return localStorage.getItem('savedLetters') || getRandomWord();
+    return sessionStorage.getItem('savedLetters') || getRandomWord();
   });
 
   const [guessedLetters, setGuessedLetters] = useState(() => {
-    const savedGuessedLetters = localStorage.getItem('savedGuessedLetters');
+    const savedGuessedLetters = sessionStorage.getItem('savedGuessedLetters');
     return savedGuessedLetters ? JSON.parse(savedGuessedLetters) : [];
   });
 
   const [farewellText, setFarewellText] = useState(() => {
-    return localStorage.getItem('savedFarewellText') || '';
+    return sessionStorage.getItem('savedFarewellText') || '';
   });
 
   useEffect(() => {
-    localStorage.setItem('savedLetters', currentWord);
-    localStorage.setItem('savedGuessedLetters', JSON.stringify(guessedLetters));
+    sessionStorage.setItem('savedLetters', currentWord);
+    sessionStorage.setItem(
+      'savedGuessedLetters',
+      JSON.stringify(guessedLetters)
+    );
   }, [currentWord, guessedLetters]);
 
   const maxWrongGuesses = languages.length - 1;
@@ -39,13 +42,16 @@ function App() {
 
   useEffect(() => {
     const savedWrongCount =
-      parseInt(localStorage.getItem('savedWrongGuessCount')) || 0;
+      parseInt(sessionStorage.getItem('savedWrongGuessCount')) || 0;
 
     if (wrongGuessCount !== savedWrongCount) {
       const text = getFarewellText(languages[wrongGuessCount - 1]?.name);
       setFarewellText(text);
-      localStorage.setItem('savedFarewellText', text);
-      localStorage.setItem('savedWrongGuessCount', wrongGuessCount.toString());
+      sessionStorage.setItem('savedFarewellText', text);
+      sessionStorage.setItem(
+        'savedWrongGuessCount',
+        wrongGuessCount.toString()
+      );
     }
   }, [wrongGuessCount]);
 
@@ -108,10 +114,10 @@ function App() {
     setCurrentWord(() => getRandomWord());
     setGuessedLetters([]);
     setFarewellText('');
-    localStorage.removeItem('savedLetters');
-    localStorage.removeItem('savedGuessedLetters');
-    localStorage.removeItem('savedFarewellText');
-    localStorage.removeItem('savedWrongGuessCount');
+    sessionStorage.removeItem('savedLetters');
+    sessionStorage.removeItem('savedGuessedLetters');
+    sessionStorage.removeItem('savedFarewellText');
+    sessionStorage.removeItem('savedWrongGuessCount');
   }
 
   return (
