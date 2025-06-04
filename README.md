@@ -50,12 +50,12 @@ Add a screenshot of your game below:
 
 ## 🙋‍♂️ Author & modifications
 
-Created and extended by **[Your Name]** based on the final project idea from the freeCodeCamp x Scrimba React course.
+Created and extended by **Jakub Strycharz** based on the final project idea from the freeCodeCamp x Scrimba React course.
 
 Improvements added:
 - Dynamic message management
 - UX enhancements (animations, layout polish)
-- Local storage persistence
+- Session storage persistence
 
 ---
 
