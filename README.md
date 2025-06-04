@@ -11,7 +11,7 @@ While the original idea comes from the final capstone game built in the course, 
 ## ✨ Features
 
 - 🎮 Interactive Hangman-style game using React
-- 💾 Game state saved to `localStorage` (can easily switch to `sessionStorage`)
+- 💾 Game state saved to `sessionStorage`
 - 💬 Dynamic farewell messages when you guess wrong
 - 🎉 Confetti celebration when you win
 - ♻️ Reset button to start a new game
