@@ -132,7 +132,7 @@ header > p {
 }
 
 .letter.missing-letter {
-  color: red;
+  color: rgb(189, 11, 11);
 }
 
 .keyboard {
@@ -183,6 +183,21 @@ header > p {
 
 .new-game-btn:hover {
   background-color: hsl(195, 76%, 43%);
+}
+
+.letter.fade-out {
+  animation: fadeOut 3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
 }
 
 .sr-only {

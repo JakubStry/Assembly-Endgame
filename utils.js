@@ -1,7 +1,7 @@
 import { words } from './words';
 
 export function getRandomWord() {
-  const randomIndex = Math.floor(Math.random() * words.length - 1);
+  const randomIndex = Math.floor(Math.random() * words.length);
   const randomWord = words[randomIndex];
   return randomWord;
 }

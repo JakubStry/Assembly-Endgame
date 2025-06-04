@@ -16,6 +16,7 @@ export default function WordToGuess({
         key={index}
         className={clsx(
           'letter',
+          isGameLost && 'fade-out',
           !guessedLetters.includes(letter) && 'missing-letter'
         )}
       >
